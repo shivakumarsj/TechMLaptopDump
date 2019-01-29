@@ -1,0 +1,18 @@
+1. Does the script implement each step of the test case?
+2. Does the script implement each step in the correct order?
+3. Does the script implement each validation given in the test case?
+4. Does the script have each validation after the correct step?
+5. Does the script logic call the correct functions? Are these functions called with the correct arguments?
+6. Does the script take test datas from the correct input test data file(s)?
+7. Does the script execute user operations against the correct objects?
+8. Does the script give the application sufficient time to transition to the correct test state e.g. the correct screen?
+9. Does the script validate application output values against the correct output test data file(s)?
+10. Does the script validate the state of the correct objects?
+11. Does the script load only the necessary objects in memory?
+12. Is the script free from unnecessary delays?
+13. Does the script handle application errors as designed?
+14. Does the script have a unique identifier?
+15. Is the script commented at each appropriate place in it? Is each comment correct?
+16. Is the script free from unnecessary or extra code?
+17. Does the script takes screenshot of failed scripts or not??
+18. Does the FW gives proper report or not??
