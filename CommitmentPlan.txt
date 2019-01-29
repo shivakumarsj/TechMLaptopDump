@@ -1,0 +1,215 @@
+run_all_policers
+
+OYO 14139 Golden Castle
+prakash comforts
+
+
+
+state : 
+10 - Produre
+14 - complete/success
+21 - CEASE
+16 - HOLD
+**************************************************
+dup_removal.ksh
+
+bash
+PS1='`pwd`$ '
+Jan@2015
+
+#To goto flag dir
+cd $ADDER_HOME/flags
+
+#To goto bin folder
+cd $ADDER_HOME/bin
+
+#To remove flags 	
+rm $ADDER_HOME/flags/*	
+
+***************************************************************************************************************************************************************
+Provide Journey AD - Mod A/C:
+	
+1. automated_contracts_processing.ksh REQUEST
+2. automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+3. automated_contracts_creation.ksh $CONN_COMMON_DATA CREATION
+4. automated_contracts_processing.ksh RESPONSE
+
+Check entry in customer_assigned_product : 
+
+select * from customer_assigned_product where contract_number in ('BTW455961-1','BTW455301-1'); - ServiceID
+***************************************************************************************************************************************************************
+Activation scripts - Mod A : 
+
+1. activation_scheduler.pl $CONN_COMMON_DATA D
+2. execute_db_procedure.ksh $CONN_COMMON_DATA "pr_maintain_cap_delta(16)"
+
+BEFORE 3RD SCRIPT and commit;
+delete acct_delta where acct_id in ( select acct_id from acct_delta_audit where  trunc(action_date) = trunc(sysdate))
+
+commit
+
+3.ns_cutover_policer_daily.ksh $CONN_COMMON_DATA
+4.execute_db_procedure.ksh $CONN_COMMON_DATA "pkg_alternate_policer.oneplan_policer(16)"
+5.execute_db_procedure.ksh $CONN_COMMON_DATA "pr_dino_rental_policer(16)"
+6.execute_db_procedure.ksh $CONN_COMMON_DATA "pr_bapf_policer"
+7.schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters  B
+8.r157_update_bac_ntw_status.ksh $CONN_COMMON_DATA
+====================================================
+Check Contract status in – customer_contract
+select * from customer_contract where contract_number in ('BTBCE000135');
+
+	
+
+***************************************************************************************************************************************************************
+
+MOd C
+
+
+activation_scheduler.pl $CONN_COMMON_DATA D
+execute_db_procedure.ksh $CONN_COMMON_DATA "pr_maintain_cap_delta(16)"
+
+BEFORE 3RD SCRIPT and commit:
+
+delete from  acct_delta_audit a 
+where rowid not in  ( select max(rowid) 
+                      from acct_delta  b 
+                      where a.CONTRACT_ID = b.CONTRACT_ID 
+                      and a.contract_number  = b.contract_number 
+                      and a.acct_id  = b.acct_id 
+                      and a.DBASE_ID = b.DBASE_ID 
+                      and a.action_date = b.action_date 
+                      and a.source_code=b.source_code)
+
+
+comit
+
+ns_cutover_policer_daily.ksh $CONN_COMMON_DATA
+execute_db_procedure.ksh $CONN_COMMON_DATA "pkg_alternate_policer.oneplan_policer(16)"
+execute_db_procedure.ksh $CONN_COMMON_DATA "pr_dino_rental_policer(16)"
+execute_db_procedure.ksh $CONN_COMMON_DATA "pr_bapf_policer"
+schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters B
+r157_update_bac_ntw_status.ksh $CONN_COMMON_DATA
+
+
+********************************************************************************************************
+If placed via ADDER run below : After running above scripts
+
+mbcc_request_start.ksh
+
+select * from ns_bal_request_audit where contract_number = 'BTBF115548'
+
+Order status shoud be "Req-sent'
+
+After 10 min run the below script.
+
+mbcc_response_start.ksh D 
+
+Order status shoud be "success'
+
+***************************************************************************************************************************************************************
+REGRADE via SaaS
+
+CREATION:1,3 and 4 - Activation
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+automated_contracts_creation.ksh $CONN_COMMON_DATA CREATION
+automated_contracts_processing.ksh RESPONSE
+
+REGRADE:
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+automated_contracts_creation.ksh $CONN_COMMON_DATA REGRADE
+automated_contracts_processing.ksh REGRADE_RESPONSE
+
+ACCOUNT ADDITION and REMOVAL:
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA DATA_VALIDATE
+automated_contracts_creation.ksh $CONN_COMMON_DATA ADDITION
+automated_contracts_creation.ksh $CONN_COMMON_DATA REMOVE
+automated_contracts_processing.ksh MODIFY_RESPONSE
+
+CEASATION:2
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA DATA_VALIDATE
+automated_contracts_creation.ksh $CONN_COMMON_DATA CEASE
+automated_contracts_processing.ksh CEASE_RESPONSE
+
+MODIFY:
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA PRODUCT_CHANGE_VALIDATION
+automated_contracts_creation.ksh $CONN_COMMON_DATA PRODUCT_CHANGE_REQ
+automated_contracts_processing.ksh MODIFY_RESPONSE
+
+
+
+Tactic migration:
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA DATA_VALIDATE
+automated_contracts_creation.ksh $CONN_COMMON_DATA CEASE
+automated_contracts_processing.ksh CEASE_RESPONSE
+
+automated_contracts_processing.ksh REQUEST
+automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+automated_contracts_creation.ksh $CONN_COMMON_DATA CREATION
+automated_contracts_processing.ksh RESPONSE
+*********************************************************************************************************************************************************
+Find the steps to load revenue for New stack  rental revenue 
+1.      Create and activate contract ,police it 
+2.      Backdate the contract 
+3.      After executing 
+
+schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters B
+
+The response file ADDER_GENEVA_RENTAL_REVENUE_RESPONSE.dat has to be got from ANTILLIA with the requested revenue details
+
+4.      Place ADDER_GENEVA_RENTAL_REVENUE_RESPONSE.dat at /adder/adder/data/report/NS_FEED directory 
+5.      Then check the data  in select * from ext_ns_rental_revenue 
+6.      Place the ADDER_GENEVA_RENTAL_REVENUE_RESPONSE_ddmmyyhhmmss.dat at /adder/adder/upload directory 
+7.      Run  the  schedule_ns_revenue.ksh $CONN_COMMON_DATA /adder/adder/data/report/NS_FEED RENTAL – for rental 
+8.      Check the rental revenue  tables 
+*********************************************************************************************************************************************
+Run the below command if Error is displayed. 
+
+[adder@blt00787011 bin]$ dup_removal.ksh
+02 May 2016 11:34:19 -
+02 May 2016 11:34:19 - Dupe_Removal Execution SUCCESSFUL.
+[adder@blt00787011 bin]$ ls -lrt $FLAG_DIR
+total 0
+-rw-rw-r--. 1 adder adder 0 May  2 11:28 schedule_ns_revenue_rqg_error
+-rw-rw-r--. 1 adder adder 0 May  2 11:29 r157_upd_bac_ntw_status_finished
+-rw-rw-r--. 1 adder adder 0 May  2 11:29 MBCC_REQUEST_START_FINISHED
+-rw-rw-r--. 1 adder adder 0 May  2 11:34 MBCC_RESPONSE_START_FINISHED
+
+[adder@blt00787011 bin]$ rm /adder/adder/flags/schedule_ns_revenue_rqg_error
+[adder@blt00787011 bin]$ schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters B
+DATA_FILE_OUT : /adder/adder/data/report/reward_reco_letters/ADDER_GENEVA_REVENUE_REQUEST_*.dat
+IF IN_DATE :  02-May-2016
+IN_DATE :  02-May-2016
+REQUEST_TYPE :  B
+02 May 2016 11:34:49 - Started.
+02 May 2016 11:34:49 - working upto this point	
+02 May 2016 11:34:49 - schedule_ns_revenue_rqg: Execution Started.
+02 May 2016 11:34:49 - Creating file ADDER_GENEVA_REVENUE_REQUEST_02052016113449.dat at /adder/adder/data/report/reward_reco_letters Procedure pr_ns_revenue_request: generated SUCCESSFULLY...
+02 May 2016 11:34:49 - schedule_ns_revenue_rqg: Execution finished.
+02 May 2016 11:34:49 - pr_ns_revenue_rqg Execution SUCCESSFUL.
+[adder@blt00787011 bin]$
+*********************************************************************************************************************************************
+touch /adder/adder/data/report/NS_FEED/ADDNUM_DELTA_20160627.csv 
+
+/adder/adder/bin/execute_db_procedure.ksh $CONN_COMMON_DATA "pkg_generic.pr_run_process('CUG','D')"
+Mention Today's date in first "touch" file name
+eod
+******************
+
+
+
+schedule_cutover_policer 
+touch Reward_reco_report_batch_Finished
+touch identify_roll_oe_customers_Finished
+

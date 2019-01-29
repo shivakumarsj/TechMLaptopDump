@@ -1,0 +1,58 @@
+*******************************************************************************************************
+ Banu,GT,G Thasleem,TAQ6 C; Dev,A,Archana,TAQ6 C; Hymavathi,N,Nagari,TAQ6 C; Itagi,RV,Ranjit V,TAQ6 C; Kallianpur,V,Vanditha,TAQ6 C; L,A,Aswani,TAQ6 C; Nagaraja,N,Namitha,TAQ6 C; Nisarga R T,V,Vikram,TAQ6 C; Pai H,N,Namratha,TAQ6 C; Shri,H,Harsha,TAQ6 C; Suvarna,G,Gouthami,TAQ6 C; Sarvepalli,NSL C; R,L,Lavanya,TAQ6 C; Kalludevanahalli,A,Arun,TAQ6 C; YV,M,Manogna,TAQ6 C; GR,V,Vinyas,TAQ6 C; SJ,S,Shivakumar,TAQ6 C; Jayanthan,V,Venkatesan,TAQ6 C; Chatterjee,A,Abhishek,TAQ6 C; Kalluru,P,Pranati,TAQ6 C; Belagala,B,Bhavana,TAQ6 C; Mekala,SP,Swetha,TAQ6 C; Kachibhotla,C,Chakri,TAQ6 C; Guruprasad,R,Rashmi,TAQ6 C; Govindaraj,T,Teekaraman,TAQ6 C; Kale,U,Umesh,TAQ6 C; Dev,A,Archana,TAQ6 C; Suvarna,G,Gouthami,TAQ6 C; Nagaraja,N,Namitha,TAQ6 C; Kallianpur,V,Vanditha,TAQ6 C; Kumar,Y,Yogesh,TAQ6 C; Palanisamy,B,Bhuvaneshwari C; Kunjappa,R,Rahul,TAQ6 C; Gadkar,M,Monika,TAQ6 C; Rao,P,Pallavi,TAQ6 C; Sarvepalli,NSL C; TS,N,Nayana,TAQ6 C; Nanjundan,P,Pranesh,TAQ6 C;aswani.mourougassamy@bt.com
+
+Govindaraj,T,Teekaraman,TAQ6 C; Tatti,K,Kiran,TAQ6 C; Jithin,S,Suja,TAQ6 C <suja.jithin@bt.com>; M P,P,Pradeep,TAQ6 C <pradeep.mp@bt.com>
+
+R45 | L2C | QC Retests ***IMP***
+
+Hi Team, 
+
+Good Morning :)
+Please clear below QC’s in retest ASAP. 
+
+********************************************************************************************************
+CMF loaded BAC in Model  C
+
+Hi Yogesh/Data Team,
+
+Please Data for executing the R43 EOP Test cases. 
+
+     4 customers with  "CMF loaded BTB BAC in Model C"
+     2 customers with  "CMF loaded BTGS BAC in Model C"
+
+********************************************************************************************************
+R43 | P1 QC's | L2C | Critical QC update
+
+Please check below mentioned critical QC’s and update ETA.
+********************************************************************************************************
+CV: 
+
+L,A,Aswani,TAQ6 C <aswani.l@bt.com>; Kalluru,P,Pranati,TAQ6 C <pranati.kalluru@bt.com>; Anand,S,Shruti,TAQ6 C <shruti.anand@bt.com>; Kachibhotla,C,Chakri,TAQ6 C <chakri.kachibhotla@bt.com>; YV,M,Manogna,TAQ6 C <manogna.yv@bt.com>; Lekkalapudi,T,Thejasri,TAQ6 C <thejasri.lekkalapudi@bt.com>; Nanjundan,P,Pranesh,TAQ6 C <pranesh.nanjundan@bt.com>; Tatti,K,Kiran,TAQ6 C <kiran.tatti@bt.com>; Govindaraj,T,Teekaraman,TAQ6 C <teekaraman.govindaraj@bt.com>; M P,P,Pradeep,TAQ6 C <pradeep.mp@bt.com>; Anand,S,Shruti,TAQ6 C <shruti.anand@bt.com>; Thiyagarajan,N,Nithya,TAQ6 C <nithya.thiyagarajan@bt.com>
+
+
+********************************************************************************************************
+R44 | CV update for 4th August 2016
+
+Hi Basanth, 
+
+Please find the updated sheet: 
+
+ Tatti,K,Kiran,TAQ6 C <kiran.tatti@bt.com>; L,A,Aswani,TAQ6 C <aswani.l@bt.com>; Govindaraj,T,Teekaraman,TAQ6 C <teekaraman.govindaraj@bt.com>; SJ,S,Shivakumar,TAQ6 C <shivakumar.sj@bt.com>; Nanjundan,P,Pranesh,TAQ6 C <pranesh.nanjundan@bt.com>
+
+********************************************************************************************************
+RE: UKBM stories - l2C execution - CV
+
+
+Leg_Xfer	Legacy_Xfer_01	Can I SABB Cease a PSTN
+Leg_Xfer	Legacy_Xfer_02	Can I SABB Cease a FL
+Leg_Xfer	Legacy_Xfer_03	Can I SABB Cease a CPE Asset
+Leg_Xfer	Legacy_Xfer_04	Can I SABB Cease a PSTN ML
+Leg_Xfer	Legacy_Xfer_05	Can I SABB Cease a BB Asset
+********************************************************************************************************
+
+
+
+161102
+
+
+

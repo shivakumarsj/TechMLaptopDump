@@ -1,0 +1,99 @@
+Order placed via AD
+
+PS1='`pwd`$ '
+
+1. cd $ADDER_HOME/flags
+
+2. cd $ADDER_HOME/bin
+
+3. rm $ADDER_HOME/flags/*
+
+
+4. automated_contracts_processing.ksh REQUEST
+5. automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+6. automated_contracts_creation.ksh $CONN_COMMON_DATA CREATION
+7. automated_contracts_processing.ksh RESPONSE
+8. automated_contracts_processing.ksh REQUEST
+9. automated_contracts_creation.ksh $CONN_COMMON_DATA DATA_VALIDATE
+10. automated_contracts_creation.ksh $CONN_COMMON_DATA CEASE
+11. automated_contracts_processing.ksh CEASE_RESPONSE
+---------------------------------------------------------------------------
+12.automated_contracts_processing.ksh REQUEST
+
+13. automated_contracts_creation.ksh $CONN_COMMON_DATA VALIDATION
+
+Check entry  in automated_contract_details
+
+select * from automated_contract_details;
+
+Check entry  in automated_contract_network
+
+select * from automated_contract_network;
+
+14. automated_contracts_creation.ksh $CONN_COMMON_DATA CREATION
+-----------------------------------------------------------------------------
+15. automated_contracts_processing.ksh RESPONSE
+
+Check entry in customer_assigned_product
+	
+select * from customer_assigned_product where contract_number like ''
+
+16. activation_scheduler.pl $CONN_COMMON_DATA D
+
+17. execute_db_procedure.ksh $CONN_COMMON_DATA "pr_maintain_cap_delta(16)"
+
+after this step execute the delete query
+
+delete from  acct_delta_audit a 
+where rowid not in  ( select max(rowid) 
+                      from acct_delta  b 
+                      where a.CONTRACT_ID = b.CONTRACT_ID 
+                      and a.contract_number  = b.contract_number 
+                      and a.acct_id  = b.acct_id 
+                      and a.DBASE_ID = b.DBASE_ID 
+                      and a.action_date = b.action_date 
+                      and a.source_code=b.source_code);
+
+Commit;
+
+18. ns_cutover_policer_daily.ksh $CONN_COMMON_DATA
+
+19. execute_db_procedure.ksh $CONN_COMMON_DATA "pkg_alternate_policer.oneplan_policer(16)"
+
+20. execute_db_procedure.ksh $CONN_COMMON_DATA "pr_dino_rental_policer(16)"
+
+21. execute_db_procedure.ksh $CONN_COMMON_DATA "pr_bapf_policer"
+
+22. schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters  B
+
+23. r157_update_bac_ntw_status.ksh $CONN_COMMON_DATA
+
+=======================================================================================================================================================================
+
+If we place via Adder
+
+Run all above steps.
+
+After running all above steps, run the steps which has mentioned below
+
+execute the below query:
+
+select * from ns_bal_request_audit where contract_number = 'BTBCE000392';
+
+Order status should be "New"
+
+24. mbcc_request_start.ksh
+
+execute the below query:
+
+select * from ns_bal_request_audit where contract_number = 'PVGP000021';
+
+Order status should be "Req Sent"
+
+25. mbcc_response_start.ksh D
+
+execute the below query:
+
+select * from ns_bal_request_audit where contract_number = 'PVGP000021';
+
+Order status should be "SUCCESS"

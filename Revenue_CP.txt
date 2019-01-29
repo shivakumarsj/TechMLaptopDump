@@ -1,0 +1,50 @@
+Find the steps to load revenue for New stack  rental revenue 
+1.      Create and activate contract ,police it 
+2.      Backdate the contract 
+
+[Dixon,Vijay,]
+BEGIN
+   PR_BACKDATE_CONTRACT ('&CONTRACT_ID', '&MONTHS_TO_BACKDATE');
+END;
+
+
+
+BEGIN
+   pr_backdate_contract_days ('&CONTRACT_ID', '&DAYS_TO_BACKDATE', 0);
+END;
+
+exit; 
+
+3.      After executing 
+
+
+
+
+schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters B 
+schedule_ns_revenue_rqg.ksh $CONN_COMMON_DATA /adder/adder/data/report/reward_reco_letters R
+
+dup_removal.ksh
+rm $ADDER_HOME/flags/*
+
+[Dixon,Vijay,] 
+File will be generated at /export/home/osmf/cdtaddr/ADDER_GENEVA_REVENUE_REQUEST_ddmmyyhhmmss.dat
+
+Loging to cdtaddr user id                              
+                                $>cd
+                                $> .profile
+                                $> . /osmf/mgmt/condir/cdirect/.profile
+                                Check antillia entry in /osmf/mgmt/condir/cft/BT/local/parm/chkusr.txt
+                                
+                                Sending file using XFB
+                                                send_usage_feed_antillia.ksh CDTVOIP
+                                                #Adder-Antilia Rental Revenue Request#
+                                                send_rental_feed_antillia.ksh CDTVOIP
+
+The response file ADDER_GENEVA_RENTAL_REVENUE_RESPONSE.dat has to be got from ANTILLIA with the requested revenue details
+
+4.      Place ADDER_GENEVA_RENTAL_REVENUE_RESPONSE.dat at /adder/adder/data/report/NS_FEED directory 
+5.      Then check the data  in select * from ext_ns_rental_revenue [Dixon,Vijay,] with filter on the contract details
+6.      Place the ADDER_GENEVA_RENTAL_REVENUE_RESPONSE_ddmmyyhhmmss.dat at /adder/adder/upload directory 
+7.      Run  the  / – for rental 
+
+8.      Check the rental revenue  tables 

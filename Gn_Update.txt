@@ -1,0 +1,208 @@
+
+01412320984 - Number shared by Priyanka
+
+-------------------------------------------------------------------------------------------------
+manjunanth : 400
+Abhilash : 400
+Bhargav : 400
+
+parbdev / mailpass@8 
+tntsup / June@2022
+ORGNPUser/P@ssw0rd
+
+ENVIRONMENT : FS602A 
+STATUS : AIB_OUT_2 
+
+
+One Bill Acct : VP33456071 
+
+FLOW Mod A : http://robtflmanmoda.nat.bt.com:61002/smflmaw02/fresco.login
+Flow Mod C : http://robtflmanmodc.nat.bt.com:61002/smflmaw04/fresco.login
+User ID : 609680085 / Jayadev@44
+
+Abhi@6916@3 / 611832687
+
+LIMS Saarth no : 01912457248 --  01912457409
+ 
+Env : BACCHUS
+Exch : BDOG
+
+Fresh Number  Mod A :   01506 
+Fresh Number  Mod C :   01505
+-------------------------------------------------------------------------------
+mod A - 
+
+BTWLRTransferIn : 
+01912457418 - 01912457419 - Used
+01912457427 - 01912457429 - Key : 10291398
+01912457448 - 01912457459 - Not used
+
+01912457458
+
+Gupta : SC5 & 6 : 01217900356 - 01217900370
+Shruti : SC5 : DN’s : 01217900383 - 01217900385 - COMPLETED
+
+001 Working DN - cloud phone : 01501747007 - 01501747020
+
+01501747021
+
+Mod A : OR number : 
+
+01934000000 - sent for SEMP configuration
+01934000001 - sent for SEMP configuration
+01934000002 - Given to manogna
+01934000003
+01934000004 
+01934000005 - used to place order
+01934000006 - Used to place order - autopostpone
+01934000007
+01934000008
+01934000009
+
+
+Mod C : 
+
+SC4 : 
+01224810016 
+01224810017 
+
+-------------------------------------------------------------------------------
+Sprint 29
+1. Internal tranfer Numbers : 
+	BTWLRTransferIn - Update from 1 to 2 hr
+
+Sprint 31
+2. Auto - Activation trigger to execlude sundays and Bank holidays
+  
+   Single Number import with subScenarioType values “BTWLRPortIn”**, “BTRESELSubPort**”, “BTRESELPortIn”**, “BTWLRTransferIn**”, “SC5”, “SC6”, “SC7”, or “SC8”
+   manualActivation value “Y”
+   reached CAD+7days.
+
+3. Cease "FulfilmentOnCustomerAgreedDate" Tag is added.  - Not yet delvired
+   Cease of a single number
+
+Sprint 32
+4. Import of SL FeatureLine to BTB CV
+
+---------------------------------
+BT24676R
+
+Mouniabhi@2
+-------------------------------------------------------------------------------
+MQ update Mod A : 
+
+http://10.35.58.169:8080/aibmq/ 
+BT.QM.EMB703T6 
+10.29.70.37 
+AIB.SVRCONN.C1 
+51436 
+BT.AL.AIB.MNP_FWSC_TO_AIB_MA_RES.01 
+
+
+MQ update Mod C1 : 
+
+
+
+
+Status : ACk to confirmed
+sequence : 2 
+messasge id : change some values.
+-------------------------------------------------------------------------------
+
+for FL import like i excplained earlier :
+1) place FL order and complete it such that we get FL assets
+2) Ensure FL number tagged to FL service in the asset matched the configuration for SCa or SCb as given in my mail
+3) Place our Imprt Order using GN module and ensure the subscenarioType value is SCa/Scb
+4) lead time is 4 days...@anoosha, can u confirm on this?
+-------------------------------------------------------------------------------
+Data : 
+
+SL : 
+	BT24F5JF (KCI not updated)
+	BT24H2DJ 
+	
+	 
+	
+-------------------------------------------------------------------------------	
+	SCa
+RH : 001
+GCP : null
+Product Code: PSTN
+Status: WORKING/IMPORTED
+Mastered by: CSS
+
+SCa
+RH : OLO
+GCP : 001
+Product Code: PSTN
+Status: WORKING/IMPORTED
+
+SCb
+RH: 001
+GCP : null
+Product Code: PSTN
+Status: WORKING/IMPORTED
+Mastered by: LIMS
+
+
+BT24T63L
+-------------------------------------------------------------------------------
+
+FL order : 
+
+BT23T43Z - 01912700564 - Used. 
+
+Mod A : 
+
+BT23T43L - 01912700505 - No FL asset
+BT23J4JH - 01912600123 - Used - GP00127620
+BT23J4J9 - 01912600121 - Used - GP00129450
+BT23J4JC - 01912600122 - used - GP00125615
+
+
+New set sent for configuration : 
+BT23T6Y6 - 01912700547 - used
+BT23T6XK - 01912700518
+BT23T6ZK - 01912700545 
+
+NEW set : 
+
+BT23T45V - 01912700553
+BT23T45W - 01912700552
+BT23T42Z - 01912700508
+BT23T438 - 01912700510
+
+
+
+
+Mod C : 
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+New number : Rothesay (01700) - mod A	
+
+-------------------------------------------------------------------------------------------
+
+Cloud Phone : 
+
+RH = 001 or OLO (099)
+MNUM GCP = 001 
+Status: WORKING/IMPORTED 
+PRODUCT: IPEXCHANGESDINSUBALLOCATION
+
+-------------------------------------------------------------------------------------------
+SAAS - shilpa.jose@bt.com , seethal.varghese@bt.com
+AIB - Thum,KL,Kiat Loong,TAJ78 R <kiatloong.thum@bt.com>; Mohamad Kamal,SS,Syahidah R <syahidah.mohamadkamal@bt.com>; Alias,EH,Emrul Haikal,TAJ78 R <emrulhaikal.alias@bt.com>; Sim,AWL,Alvin,TAJ78 R <alvin.sim@bt.com> ;aib.ukb.my@bt.com
+
+WS AIB - wsaibtestsupport@bt.com
+
+E2E Design - sanjujoy.pulimoottil@bt.com
+
+
+
+
+
